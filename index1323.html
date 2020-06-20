@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!--Axios-->
+<!--Axios-->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <title>Maggie's weather forecast</title>
+    <title>MagWeather</title>
 
-    <!--Bootstrap-->
+<!--Bootstrap-->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -17,37 +17,117 @@
       crossorigin="anonymous"
     />
 
-    <!--H2 Font Style - Frederick the Great-->
+<!--H2 Font Style - Frederick the Great-->
     <link
       href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap"
       rel="stylesheet"
     />
 
-    <!--H3 Font Style - Amatic-->
+<!--H3 Font Style - Amatic-->
     <link
       href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap"
       rel="stylesheet"
     />
 
-    <!--Font Style - Open Sans Condensed-->
+<!--Font Style - Open Sans Condensed-->
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap"
       rel="stylesheet"
     />
 
-    <!--Fontawesome -->
+<!--Fontawesome -->
     <script
       src="https://kit.fontawesome.com/ea4addfbb7.js"
       crossorigin="anonymous"
     ></script>
 
-    <!--Stylesheet-->
+<!--Stylesheet-->
     <link rel="stylesheet" href="src/style1323.css" />
   </head>
+
+
   <body>
+
+    <div class="wholeContent">
+      <div class="weatherApp">
+<!--Search Engine-->
+        <form id="search-form" class="mb-3">
+          <div class="row">
+            <div class="col-6">
+              <input 
+              type="search"
+              placeholder="Search your favourite City..."
+              class="form-control"
+              id="city-input"
+              autocomplete="off"/>
+            </div>
+            <div class="col-2">
+              <input 
+              type="submit"
+              value="🔍"
+              class="btn btn-light w-50">
+            </div>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col-12">
+<!--Current Day, Time, Weather-->
+            <div class="today">
+              <div class="firstDay">
+                <div class="card rounded">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-6">
+                        <h2 id="currentCity">Current City</h2>
+                      </div>
+                      <div class="col-6">
+                        <h5 class="text-right" id="todayIsThisDay">Today</h5>
+                      </div>
+                    </div>
+<!--Current Weather Data-->
+                    <div class="row">
+                      <div class="col-4">
+                        <p class="text-center" id="todays-weather-icon">
+                          🌞
+                        </p>
+                        <h4 class="text-center" id="todays-description">HOT</h4>
+                      </div>
+                      <div class="col-4">
+                        <h4 class="text-center">
+                          <span id="todays-temperature">
+                            <strong>
+                              15
+                            </strong>
+                          </span><span class="units"
+                          ><a href="#" id="celsius-link" class="active">°C</a> |
+                          <a href="#" id="fahrenheit-link">°F</a>
+                          </span> 
+                        </h4>
+                      </div>
+                      <div class="col-4 text-center">
+                          <ul id="todays-weather-conditions">
+                            <li>Humidity: <span id="humidity"></span>%</li>
+                            <li>Wind: <span id="wind"></span> km/h</li>
+                            <li><i class="fas fa-umbrella">: </i> %</li>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row weather-forecast" id="forecast">
+          What will happen next week?
+        </div>
+
+
+      </div>
+    </div>
     <p class="impressum">
-    <a href="..." target="_blank">Open-source Code</a>
-    coded by
+    <a href="https://github.com/i1323/finalProject1323" target="_blank">Open-source Code</a>
+    by
     <a href="https://www.instagram.com/maggie__margarete/" target="_blank">Maggie</a>
   </p>
   </div>
