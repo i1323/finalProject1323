@@ -17,9 +17,15 @@ h3 {
   font-family: "Amatic SC", cursive;
 }
 
-h4,
+h4 {
+  font-size: 50px;
+  font-family: "Open Sans Condensed", sans-serif;
+  margin: 0 auto;
+}
+
 h5,
 h6 {
+  font-size: 25px;
   font-family: "Open Sans Condensed", sans-serif;
   margin: 0 auto;
 }
@@ -63,10 +69,21 @@ h5 i {
   border-radius: 15px;
 }
 
+.weather-temperature strong {
+  line-height: 1;
+  font-weight: 800;
+}
+.units {
+  font-size: 20px;
+}
 .card {
   margin: 5px 2px;
 }
 
 .impressum {
   font-size: 16px;
+}
+
+#todays-description {
+  text-transform: uppercase;
 }

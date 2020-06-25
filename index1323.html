@@ -79,7 +79,7 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-6">
-                        <h2 id="currentCity">Current City</h2>
+                        <h2 id="currentCity"></h2>
                       </div>
                       <div class="col-6">
                         <h3 class="text-right" id="todayIsThisDay">Today</h3>
@@ -91,25 +91,26 @@
                         <p class="text-center" id="todays-weather-icon">
                           🌞
                         </p>
-                        <h4 class="text-center" id="todays-description">HOT</h4>
+                        <h5 class="text-center" id="todays-description">HOT</h5>
                       </div>
                       <div class="col-4">
-                        <h4 class="text-center">
-                          <span id="todays-temperature">
-                            <strong>
-                              15
-                            </strong>
-                          </span><span class="units"
-                          ><a href="#" id="celsius-link" class="active">°C</a> |
-                          <a href="#" id="fahrenheit-link">°F</a>
-                          </span> 
-                        </h4>
+                        <div class="weather-temperature">
+                          <h4 class="text-center">
+                            <span id="todays-temperature">
+                              <strong></strong>                              </strong>
+                            </span><span class="units"
+                            ><a href="#" id="celsius-link" class="active"> °C</a> |
+                            <a href="#" id="fahrenheit-link">°F</a>
+                            </span> 
+                          </h4>
+                        </div>
                       </div>
                       <div class="col-4">
                           <ul id="todays-weather-conditions">
-                            <li>Humidity: <span id="humidity"></span>%</li>
-                            <li>Wind: <span id="wind"></span> km/h</li>
-                            <li><i class="fas fa-umbrella">: </i> %</li>
+                            <li><strong>Temp min/max:</strong> <span id="mini"></span> °C | <span id="max"></span> °C</li>
+                            <li><strong>Humidity:</strong> <span id="humidity"></span> %</li>
+                            <li><strong>Wind:</strong> <span id="wind"></span> km/h</li>
+                            
                           </ul>
                       </div>
                     </div>
@@ -174,5 +175,5 @@
     <a href="https://www.instagram.com/maggie__margarete/" target="_blank">Maggie</a>
   </p>
   </div>
-  <script src="src/app.js"></script></body>
+  <script src="src/function1323.js"></script></body>
 </html>
