@@ -1,3 +1,4 @@
+// Display the current day of the week and time
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -21,6 +22,7 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+// Display the city name, current temperature, weather description, show the respective weather icon for today
 function displayTemperature(response) {
   let cityElement = document.querySelector("#currentCity");
   let dateElement = document.querySelector("#todayIsThisDay");
@@ -47,8 +49,20 @@ function displayTemperature(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
-let apiKey = "6f117e861b0b0140bf049ebef75f4075";
-let city = "Paris";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "6f117e861b0b0140bf049ebef75f4075";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-axios.get(apiUrl).then(displayTemperature);
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function searchFavoriteCity(event) {
+  event.preventDefault();
+  let currentPlace = document.querySelector("#city-input");
+  search(currentPlace.value);
+}
+
+search("Salzburg");
+
+let formLocation = document.querySelector("#search-form");
+formLocation.addEventListener("submit", searchFavoriteCity);
