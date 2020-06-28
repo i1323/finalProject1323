@@ -34,6 +34,8 @@ function displayTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
 
+  celsiusTemp = response.data.main.temp;
+
   cityElement.innerHTML = response.data.name;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
@@ -42,7 +44,7 @@ function displayTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
   descriptionElement.innerHTML = response.data.weather[0].description;
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
   minElement.innerHTML = Math.round(response.data.main.temp_min);
   maxElement.innerHTML = Math.round(response.data.main.temp_max);
   humidityElement.innerHTML = response.data.main.humidity;
@@ -62,7 +64,33 @@ function searchFavoriteCity(event) {
   search(currentPlace.value);
 }
 
-search("Salzburg");
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#todays-temperature");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemp * 9) / 5 + 32;
+  
+  tempElement.innerHTML = Math.round * fahrenheitTemperature;
+}
+
+function showCelsiusTemperature(event {
+  event.preventDefault();
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  let tempElement = document.querySelector("#todays-temperature");
+  tempElement.innerHTML = Math.round(celsiusTemp);
+})
+
+let celsiusTemp = null;
 
 let formLocation = document.querySelector("#search-form");
 formLocation.addEventListener("submit", searchFavoriteCity);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemperature);
+
+search("Salzburg");
