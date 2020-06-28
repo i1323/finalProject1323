@@ -24,14 +24,21 @@ function formatDate(timestamp) {
 function displayTemperature(response) {
   let cityElement = document.querySelector("#currentCity");
   let dateElement = document.querySelector("#todayIsThisDay");
+  let iconElement = document.querySelector("#todays-weather-icon");
   let descriptionElement = document.querySelector("#todays-description");
   let temperatureElement = document.querySelector("#todays-temperature");
   let minElement = document.querySelector("#mini");
   let maxElement = document.querySelector("#max");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
+
   cityElement.innerHTML = response.data.name;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
   descriptionElement.innerHTML = response.data.weather[0].description;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   minElement.innerHTML = Math.round(response.data.main.temp_min);
