@@ -53,40 +53,46 @@ function displayTemperature(response) {
 
 function displayForecast(response) {
   let forecastElement = document.querySelector("#whole-forecast");
+  let forecast = response.data.list;
+
+  console.log(forecast[0]);
+
   forecastElement.innerHTML = `
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title" id="first-time-slot">12:00</h5>
-          <p class="card-text"><strong>16</strong>| 15°</p>
+        <h5 class="card-title text-center" id="first-time-slot">12:00</h5>
+          <p class="card-text"><strong>${Math.round(
+            forecast[0].main.temp_max
+          )}°</strong>| 15°</p>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title" id="first-time-slot">12:00</h5>
-          <p class="card-text"><strong>16</strong>| 15°</p>
+        <h5 class="card-title text-center" id="second-time-slot">15:00</h5>
+          <p class="card-text"><strong>°</strong>| °</p>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title" id="first-time-slot">12:00</h5>
-          <p class="card-text"><strong>16</strong>| 15°</p>
+        <h5 class="card-title text-center" id="third-time-slot">18:00</h5>
+          <p class="card-text"><strong>°</strong>| °</p>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title" id="first-time-slot">12:00</h5>
-          <p class="card-text"><strong>16</strong>| 15°</p>
+        <h5 class="card-title text-center" id="fourth-time-slot">21:00</h5>
+          <p class="card-text"><strong>°</strong>| °</p>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title" id="first-time-slot">12:00</h5>
-          <p class="card-text"><strong>16</strong>| 15°</p>
+        <h5 class="card-title text-center" id="fifth-time-slot">24:00</h5>
+          <p class="card-text"><strong>°</strong>| °</p>
       </div>
     </div>
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title" id="first-time-slot">12:00</h5>
+        <h5 class="card-title text-center" id="sixth-time-slot">03:00</h5>
           <p class="card-text"><strong>16</strong>| 15°</p>
       </div>
     </div>
