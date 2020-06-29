@@ -51,11 +51,56 @@ function displayTemperature(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#whole-forecast");
+  forecastElement.innerHTML = `
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" id="first-time-slot">12:00</h5>
+          <p class="card-text"><strong>16</strong>| 15°</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" id="first-time-slot">12:00</h5>
+          <p class="card-text"><strong>16</strong>| 15°</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" id="first-time-slot">12:00</h5>
+          <p class="card-text"><strong>16</strong>| 15°</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" id="first-time-slot">12:00</h5>
+          <p class="card-text"><strong>16</strong>| 15°</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" id="first-time-slot">12:00</h5>
+          <p class="card-text"><strong>16</strong>| 15°</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" id="first-time-slot">12:00</h5>
+          <p class="card-text"><strong>16</strong>| 15°</p>
+      </div>
+    </div>
+    `;
+}
+
 function search(city) {
   let apiKey = "6f117e861b0b0140bf049ebef75f4075";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function searchFavoriteCity(event) {
@@ -70,17 +115,17 @@ function showFahrenheitTemperature(event) {
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   let fahrenheitTemperature = (celsiusTemp * 9) / 5 + 32;
-  
+
   tempElement.innerHTML = Math.round * fahrenheitTemperature;
 }
 
-function showCelsiusTemperature(event {
+function showCelsiusTemperature(event) {
   event.preventDefault();
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
   let tempElement = document.querySelector("#todays-temperature");
   tempElement.innerHTML = Math.round(celsiusTemp);
-})
+}
 
 let celsiusTemp = null;
 
