@@ -1,14 +1,7 @@
 // Display the current day of the week and time
 function formatDate(timestamp) {
   let date = new Date(timestamp);
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
+
   let days = [
     "Sunday",
     "Monday",
@@ -19,7 +12,21 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  return `${day} ${hours}:${minutes}`;
+  return `${day} ${formatHours(timestamp)}`;
+}
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hours}:${minutes}`;
 }
 
 // Display the city name, current temperature, weather description, show the respective weather icon for today
@@ -53,50 +60,26 @@ function displayTemperature(response) {
 
 function displayForecast(response) {
   let forecastElement = document.querySelector("#whole-forecast");
-  let forecast = response.data.list;
+  forecastElement.innerHTML = null;
+  let forecast = null;
 
-  console.log(forecast[0]);
-
-  forecastElement.innerHTML = `
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title text-center" id="first-time-slot">12:00</h5>
+        <h5 class="card-title text-center" id="first-time-slot">${formatHours(
+          forecast.dt * 1000
+        )}</h5>
+          <img src="http://openweathermap.org/img/wn/${
+            forecast.weather[0].icon
+          }@2x.png" class="mx-auto d-block" />
           <p class="card-text"><strong>${Math.round(
-            forecast[0].main.temp_max
-          )}°</strong>| 15°</p>
+            forecast.main.temp_max
+          )}°</strong>| ${Math.round(forecast.main.temp_min)}°</p>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title text-center" id="second-time-slot">15:00</h5>
-          <p class="card-text"><strong>°</strong>| °</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title text-center" id="third-time-slot">18:00</h5>
-          <p class="card-text"><strong>°</strong>| °</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title text-center" id="fourth-time-slot">21:00</h5>
-          <p class="card-text"><strong>°</strong>| °</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title text-center" id="fifth-time-slot">24:00</h5>
-          <p class="card-text"><strong>°</strong>| °</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title text-center" id="sixth-time-slot">03:00</h5>
-          <p class="card-text"><strong>16</strong>| 15°</p>
-      </div>
-    </div>
-    `;
+    </div>`;
+  }
 }
 
 function search(city) {
@@ -122,7 +105,7 @@ function showFahrenheitTemperature(event) {
   fahrenheitLink.classList.add("active");
   let fahrenheitTemperature = (celsiusTemp * 9) / 5 + 32;
 
-  tempElement.innerHTML = Math.round * fahrenheitTemperature;
+  tempElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function showCelsiusTemperature(event) {

@@ -21,7 +21,7 @@ h3 {
 }
 
 h4 {
-  font-size: 60px;
+  font-size: 80px;
   font-family: "Open Sans Condensed", sans-serif;
   margin: 0 auto;
 }
@@ -62,12 +62,17 @@ h5 i {
   color: #cbbaccbb;
 }
 
+img#todays-weather-icon {
+  width: 150px;
+  height: 150px;
+}
+
 .wholeContent {
   /*Color: Strict November */
   background-image: linear-gradient(-225deg, #cbbacc 0%, #2580b3 100%);
   max-width: 1200px;
-  min-height: 800px;
-  margin: 30px auto;
+  min-height: 500px;
+  margin: 150px auto;
   padding: 20px 20px;
   border-radius: 15px;
 }
@@ -103,4 +108,9 @@ h5 i {
 
 #todays-description {
   text-transform: uppercase;
+}
+
+.today {
+  max-width: 800px;
+  margin: 20px auto;
 }
