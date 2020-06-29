@@ -65,6 +65,7 @@ function displayForecast(response) {
 
   for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
+    console.log(forecast);
     forecastElement.innerHTML += `
     <div class="card">
       <div class="card-body">
@@ -74,6 +75,7 @@ function displayForecast(response) {
           <img src="http://openweathermap.org/img/wn/${
             forecast.weather[0].icon
           }@2x.png" class="mx-auto d-block" />
+          <h6 class="text-center">${forecast.weather[0].description}</h6>
           <p class="card-text"><strong>${Math.round(
             forecast.main.temp_max
           )}°</strong>| ${Math.round(forecast.main.temp_min)}°</p>
